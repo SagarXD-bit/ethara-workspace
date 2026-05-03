@@ -16,7 +16,7 @@ export default function AppShell({ children }) {
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
         <header className="panel flex flex-col gap-4 p-6 shadow-glow md:flex-row md:items-center md:justify-between">
           <div>
-            <div className="text-xs uppercase tracking-[0.32em] text-sky-200/70">TaskFlow RBAC</div>
+            <div className="text-xs uppercase tracking-[0.32em] text-sky-200/70">Ethara Workflow RBAC</div>
             <h1 className="mt-2 text-3xl font-semibold text-white">
               {location.pathname === "/dashboard" ? "Team Dashboard" : "Project Workspace"}
             </h1>

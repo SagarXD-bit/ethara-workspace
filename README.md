@@ -1,140 +1,178 @@
-# TaskFlow RBAC
+# 🚀 Ethara Workspace
 
-TaskFlow RBAC is a full-stack project and task manager built for quick assessment delivery. It includes JWT authentication, role-based access control, project membership, task assignment, dashboard metrics, and a production-friendly monorepo layout for Railway deployment.
+A full-stack task and project management platform with secure authentication, role-based access control, and real-time API integration.
 
-## Stack
+---
 
-- Frontend: React + Vite + Tailwind CSS
-- Backend: Node.js + Express
-- Database: PostgreSQL + Prisma ORM
-- Auth: JWT + bcrypt
-- Deployment target: Railway
+## 🌐 Live Demo
 
-## Features
+* **Frontend:** https://ethara-workspace-frontend.vercel.app
+* **Backend API:** https://backend-production-1b5a.up.railway.app
 
-- Admin and member authentication flows
-- Admin-only project creation
-- Admin-only member assignment and task assignment
-- Member access limited to assigned projects
-- Task status updates allowed for the project owner admin or the assigned member
-- Dashboard metrics for total tasks, in-progress tasks, completed tasks, and overdue tasks
-- Demo seed data for easy RBAC testing
+---
 
-## Project Structure
+## 🧠 Features
 
-```text
-backend/   Express API, Prisma schema, seed script
-frontend/  React app, routes, dashboard UI
+* 🔐 User Authentication (Signup/Login with JWT)
+* 👤 Role-based Access (Admin / Member)
+* 📁 Project Management
+* ✅ Task Tracking System
+* 🌐 REST API integration
+* ⚡ Modern UI with Vite + React
+* ☁️ Cloud deployment (Vercel + Railway)
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React (Vite)
+* JavaScript
+* Tailwind CSS
+
+### Backend
+
+* Node.js
+* Express.js
+* Prisma ORM
+* PostgreSQL
+
+### Deployment
+
+* Vercel (Frontend)
+* Railway (Backend + Database)
+
+---
+
+## 📂 Project Structure
+
+```
+ethara-workspace/
+│
+├── frontend/        # React + Vite app
+├── backend/         # Express + Prisma API
+└── README.md
 ```
 
-## Local Setup
+---
 
-1. Create a PostgreSQL database.
-2. Copy [backend/.env.example](C:/Users/sagar/Documents/New%20project/backend/.env.example) to `backend/.env`.
-3. Copy [frontend/.env.example](C:/Users/sagar/Documents/New%20project/frontend/.env.example) to `frontend/.env`.
-4. Install dependencies:
+## ⚙️ Environment Variables
 
-```bash
+### Backend (`backend/.env`)
+
+```
+PORT=5000
+DATABASE_URL=your_database_url
+JWT_SECRET=your_secret_key
+FRONTEND_URL=http://localhost:5173
+```
+
+### Frontend (`frontend/.env`)
+
+```
+VITE_API_URL=http://localhost:5000/api
+```
+
+---
+
+## 🚀 Local Setup
+
+### 1. Clone repository
+
+```
+git clone https://github.com/SagarXD-bit/ethara-workspace.git
+cd ethara-workspace
+```
+
+---
+
+### 2. Setup Backend
+
+```
+cd backend
 npm install
+npx prisma migrate dev
+npm run dev
 ```
 
-5. Run Prisma migrations:
+---
 
-```bash
-npm run prisma:migrate
+### 3. Setup Frontend
+
+```
+cd frontend
+npm install
+npm run dev
 ```
 
-6. Seed demo users and sample data:
+---
 
-```bash
-npm run seed
+## 🔐 Authentication Flow
+
+1. User signs up → password hashed with bcrypt
+2. JWT token generated on login
+3. Protected routes require:
+
+```
+Authorization: Bearer <token>
 ```
 
-7. Start the backend:
+---
 
-```bash
-npm run dev:backend
-```
+## 📡 API Endpoints
 
-8. In a second terminal, start the frontend:
+### Auth
 
-```bash
-npm run dev:frontend
-```
-
-## Demo Credentials
-
-- Admin: `admin@example.com` / `Admin@123`
-- Member: `member@example.com` / `Member@123`
-
-These values can be changed through `backend/.env`.
-
-## API Overview
-
-### Authentication
-
-- `POST /api/auth/signup`
-- `POST /api/auth/login`
-
-### Dashboard
-
-- `GET /api/dashboard`
+* `POST /api/auth/signup`
+* `POST /api/auth/login`
 
 ### Projects
 
-- `GET /api/projects`
-- `GET /api/projects/:id`
-- `POST /api/projects`
-- `POST /api/projects/:id/members`
+* `GET /api/projects`
+* `POST /api/projects`
 
 ### Tasks
 
-- `GET /api/projects/:id/tasks`
-- `POST /api/projects/:id/tasks`
-- `PUT /api/tasks/:id/status`
+* `GET /api/tasks`
+* `POST /api/tasks`
 
-## Railway Deployment
+---
 
-This repo is set up so the backend can serve the built frontend in production.
+## ⚠️ Common Issues
 
-1. Push the monorepo to GitHub.
-2. Create a Railway project from the repository.
-3. Add a PostgreSQL service in Railway.
-4. Set environment variables for the backend service:
-   - `DATABASE_URL`
-   - `JWT_SECRET`
-   - `FRONTEND_URL`
-   - `ADMIN_EMAIL`
-   - `ADMIN_PASSWORD`
-   - `MEMBER_EMAIL`
-   - `MEMBER_PASSWORD`
-5. Run the database migration in Railway:
+* ❌ **Failed to fetch** → Check `VITE_API_URL`
+* ❌ **401 Unauthorized** → Invalid credentials / missing token
+* ❌ **CORS error** → Ensure backend allows frontend origin
+* ❌ **JWT error** → Missing `JWT_SECRET`
 
-```bash
-npm run prisma:deploy --workspace backend
-```
+---
 
-6. Optionally seed demo data:
+## 🧑‍💻 Author
 
-```bash
-npm run seed
-```
+**Sagar Rawat**
+GitHub: https://github.com/SagarXD-bit
 
-7. Railway can then use:
-   - Build command: `npm run build`
-   - Start command: `npm start`
+---
 
-## Submission Checklist
+## ⭐ Acknowledgements
 
-- Show admin login
-- Create a project
-- Add a member to the project
-- Assign a task
-- Log in as the member
-- Show that project creation is hidden or blocked
-- Update the assigned task to `DONE`
+* Prisma ORM
+* Railway
+* Vercel
+* Vite
 
-## Notes
+---
 
-- The signup endpoint currently allows selecting `ADMIN` or `MEMBER` because that is useful for demos and assessments. In a production system, admin creation should be restricted.
-- The frontend expects the API at `VITE_API_URL`, which defaults to `http://localhost:5000/api`.
+## 📌 Future Improvements
+
+* Role-based dashboard UI
+* Notifications system
+* File uploads
+* Real-time updates (WebSockets)
+
+---
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
