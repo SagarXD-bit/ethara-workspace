@@ -1,9 +1,9 @@
 import bcrypt from "bcrypt";
-import { Role } from "@prisma/client";
+
 import { z } from "zod";
 import { prisma } from "../lib/prisma.js";
 import { signToken, sanitizeUser } from "../utils/auth.js";
-
+import { PrismaClient, Role } from "@prisma/client";
 const signupSchema = z.object({
   name: z.string().trim().min(2, "Name is required."),
   email: z.string().trim().email("A valid email is required."),
