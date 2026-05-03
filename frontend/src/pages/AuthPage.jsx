@@ -110,7 +110,7 @@ export default function AuthPage() {
                   className="input"
                   name="name"
                   onChange={updateField}
-                  placeholder="Aarav Patel"
+                  placeholder="Sagar Rawat"
                   required
                   value={form.name}
                 />
