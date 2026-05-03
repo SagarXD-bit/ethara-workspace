@@ -87,7 +87,7 @@ export default function AuthPage() {
             <div>
               <div className="text-sm uppercase tracking-[0.28em] text-sky-200/70">Welcome</div>
               <h2 className="mt-2 text-3xl font-semibold text-white">
-                {isSignup ? "Create your account" : "Sign in to TaskFlow"}
+                {isSignup ? "Create your account" : "Sign in"}
               </h2>
             </div>
             <button
