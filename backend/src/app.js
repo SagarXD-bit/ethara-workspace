@@ -20,7 +20,7 @@ export const app = express();
 
 app.use(
   cors({
-    origin: allowedOrigins
+    origin: true
   })
 );
 app.use(express.json());
